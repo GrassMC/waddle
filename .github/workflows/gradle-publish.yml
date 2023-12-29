@@ -37,7 +37,7 @@ jobs:
       - name: Write release notes to file
         run: echo "${{ needs.check-release.outputs.release-notes-md }}" > release-notes.md
 
-      - run: gh release create v${{ needs.check-release.outputs.next-version }} -title ${{ needs.check-release.outputs.next-version }} -F release-notes.md
+      - run: gh release create v${{ needs.check-release.outputs.next-version }} --title ${{ needs.check-release.outputs.next-version }} -F release-notes.md
         env:
           GH_TOKEN: ${{ github.token }}
 
