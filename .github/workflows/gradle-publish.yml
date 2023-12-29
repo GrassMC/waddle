@@ -42,10 +42,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
   publish:
-    name: Publish to Gradle Plugin Portal
+    name: Publish to GrassMC Repo
     needs: check-release
     if: ${{ needs.check-release.outputs.release-type != 'none' }}
-    environment: GitHub Packages
+    environment: GrassMC Repo
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -80,9 +80,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Publish to Gradle Plugin Portal
+      - name: Publish to GrassMC Repo
         run: ./gradlew publish -Pversion=${{ needs.check-release.outputs.next-version }}
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_KEY }}
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSWORD }}
+          S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
+          S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY }}
