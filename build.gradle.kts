@@ -1,5 +1,6 @@
 plugins {
     `kotlin-dsl`
+    signing
     alias(libs.plugins.com.gradle.plugin.publish)
 }
 
@@ -45,6 +46,13 @@ gradlePlugin {
             implementationClass = "io.github.grassmc.infra.plugins.InfraSettingsPlugin"
         }
     }
+}
+
+signing {
+    val signingKeyId: String? by project
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKeyId, signingKey?.replace("\\n", "\n"), signingPassword)
 }
 
 tasks {
