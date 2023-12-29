@@ -1,0 +1,78 @@
+name: Gradle Publish
+on:
+  workflow_run:
+    workflows: [ Gradle Build ]
+    types: [ completed ]
+    branches: [ main ]
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.event.number || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  check-release:
+    name: Check for release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Let's release
+        id: lets-release
+        uses: TozyDev/lets-release@v1
+
+  release:
+    needs: check-release
+    if: needs.check-release.outputs.release-type != 'none'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Write release notes to file
+        run: echo "${{ needs.check-release.outputs.release-notes-md }}" > release-notes.md
+      - run: gh release create v${{ needs.check-release.outputs.next-version }} -title ${{ needs.check-release.outputs.next-version }} -F release-notes.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  publish:
+    name: Publish to Gradle Plugin Portal
+    needs: check-release
+    if: needs.check-release.outputs.release-type != 'none'
+    environment: GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Azul JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: zulu
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3.0.0-beta.1
+        with:
+          gradle-home-cache-cleanup: true
+          gradle-home-cache-includes: |
+            caches
+            notifications
+            jdks
+
+          gradle-home-cache-excludes: |
+            caches/build-cache-1
+            caches/keyrings
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Publish to Gradle Plugin Portal
+        run: ./gradlew publish
+        env:
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_KEY }}
+          ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSWORD }}
