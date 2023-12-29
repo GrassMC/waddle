@@ -98,7 +98,7 @@ internal fun Project.registerGeneratePaperLibrariesJsonTask() =
 internal fun Project.configureGeneratePaperLibrariesJsonTask(): TaskProvider<GeneratePaperLibrariesJsonTask> {
     val generatePaperLibrariesJson =
         tasks.named<GeneratePaperLibrariesJsonTask>(GeneratePaperLibrariesJsonTask.DEFAULT_NAME) {
-            resolvedComponentResult.convention(paperLibsRootResolution)
+            resolvedComponentResult.convention(paperLibRootResolution)
             val defaultOutputDir = objects.directoryProperty()
             defaultOutputDir.set(temporaryDirFactory.create())
             outputDir.convention(defaultOutputDir)
@@ -110,5 +110,5 @@ internal fun Project.configureGeneratePaperLibrariesJsonTask(): TaskProvider<Gen
     return generatePaperLibrariesJson
 }
 
-private val Project.paperLibsRootResolution
-    get() = configurations.named("paperLibs").map { it.incoming.resolutionResult.root }
+private val Project.paperLibRootResolution
+    get() = configurations.named(PaperPluginPart.PAPER_LIB_CONFIGURATION_NAME).map { it.incoming.resolutionResult.root }
