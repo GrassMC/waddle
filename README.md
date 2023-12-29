@@ -10,14 +10,7 @@
 dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/GrassMC/infra-gradle")
-            credentials {
-                username = providers.gradleProperty("github.user").orNull ?: System.getenv("GITHUB_ACTOR")
-                password = providers.gradleProperty("github.token").orNull ?: System.getenv("GITHUB_TOKEN")
-            }
-        }
+        maven("https://grassmc-repo.s3.ap-southeast-1.amazonaws.com/")
     }
 }
 
