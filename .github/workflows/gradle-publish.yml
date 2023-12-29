@@ -5,10 +5,6 @@ on:
     types: [ completed ]
     branches: [ main ]
 
-concurrency:
-  group: "${{ github.workflow }}-${{ github.event.number || github.ref }}"
-  cancel-in-progress: true
-
 jobs:
   check-release:
     name: Check for release
@@ -24,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
+    concurrency:
+      group: "${{ github.workflow }}-${{ github.event.number || github.ref }}-release"
+      cancel-in-progress: true
 
     steps:
       - name: Checkout repository
@@ -43,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: write
+
+    concurrency:
+      group: "${{ github.workflow }}-${{ github.event.number || github.ref }}-publish"
+      cancel-in-progress: true
 
     steps:
       - name: Checkout repository
