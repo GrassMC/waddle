@@ -55,6 +55,19 @@ signing {
     useInMemoryPgpKeys(signingKeyId, signingKey?.replace("\\n", "\n"), signingPassword)
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/GrassMC/infra-gradle")
+            credentials {
+                username = findProperty("github.user") as? String ?: System.getenv("GITHUB_ACTOR")
+                password = findProperty("github.token") as? String ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
 tasks {
     val generateBuildConstants by registering {
         doLast {
