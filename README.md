@@ -7,7 +7,7 @@
 ### `settings.gradle.kts`
 
 ```kotlin
-dependencyResolutionManagement {
+pluginManagement {
     repositories {
         gradlePluginPortal()
         maven("https://grassmc-repo.s3.ap-southeast-1.amazonaws.com/")
@@ -15,7 +15,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("io.github.grassmc.infra") version "0.1.0"
+    id("io.github.grassmc.infra") version "0.1.1"
 }
 ```
 
