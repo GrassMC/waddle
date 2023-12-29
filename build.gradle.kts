@@ -58,11 +58,11 @@ signing {
 publishing {
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/GrassMC/infra-gradle")
-            credentials {
-                username = findProperty("github.user") as? String ?: System.getenv("GITHUB_ACTOR")
-                password = findProperty("github.token") as? String ?: System.getenv("GITHUB_TOKEN")
+            name = "GrassMCRepo"
+            url = uri("s3://grassmc-repo")
+            credentials(AwsCredentials::class) {
+                accessKey = System.getenv("S3_ACCESS_KEY")
+                secretKey = System.getenv("S3_SECRET_KEY")
             }
         }
     }
