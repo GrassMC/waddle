@@ -9,6 +9,11 @@ jobs:
   check-release:
     name: Check for release
     runs-on: ubuntu-latest
+    outputs:
+      release-type: ${{ steps.lets-release.outputs.release-type }}
+      next-version: ${{ steps.lets-release.outputs.next-version }}
+      release-notes-md: ${{ steps.lets-release.outputs.release-notes-md }}
+
     steps:
       - name: Let's release
         id: lets-release
@@ -16,7 +21,7 @@ jobs:
 
   release:
     needs: check-release
-    if: needs.check-release.outputs.release-type != 'none'
+    if: ${{ needs.check-release.outputs.release-type != 'none' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -39,7 +44,7 @@ jobs:
   publish:
     name: Publish to Gradle Plugin Portal
     needs: check-release
-    if: needs.check-release.outputs.release-type != 'none'
+    if: ${{ needs.check-release.outputs.release-type != 'none' }}
     environment: GitHub Packages
     runs-on: ubuntu-latest
     permissions:
