@@ -31,6 +31,7 @@ jobs:
 
       - name: Write release notes to file
         run: echo "${{ needs.check-release.outputs.release-notes-md }}" > release-notes.md
+
       - run: gh release create v${{ needs.check-release.outputs.next-version }} -title ${{ needs.check-release.outputs.next-version }} -F release-notes.md
         env:
           GH_TOKEN: ${{ github.token }}
@@ -75,7 +76,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Publish to Gradle Plugin Portal
-        run: ./gradlew publish
+        run: ./gradlew publish -Pversion=${{ needs.check-release.outputs.next-version }}
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_KEY }}
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
