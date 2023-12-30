@@ -25,6 +25,8 @@ import org.gradle.api.provider.ListProperty
 import org.gradle.api.tasks.*
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.register
+import kotlin.io.path.deleteIfExists
+import kotlin.io.path.writeText
 
 @CacheableTask
 abstract class FindEntryNamespacesTask : DefaultTask() {
@@ -50,11 +52,11 @@ abstract class FindEntryNamespacesTask : DefaultTask() {
             val lines = file.readLines()
             lines.any { it in baseClasses }
         }
-        val foundedNamespace = foundedNamespace.get().asFile
+        val foundedNamespace = foundedNamespace.get().asFile.toPath()
         if (founded != null) {
-            foundedNamespace.writeText(founded.nameWithoutExtension)
+            foundedNamespace.writeText(founded.name)
         } else {
-            foundedNamespace.delete()
+            foundedNamespace.deleteIfExists()
         }
     }
 
