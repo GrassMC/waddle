@@ -15,7 +15,7 @@ pluginManagement {
 }
 
 plugins {
-    id("io.github.grassmc.infra") version "0.1.1"
+    id("io.github.grassmc.infra") version "0.1.2"
 }
 ```
 
