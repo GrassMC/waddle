@@ -3,7 +3,7 @@ kotlin = "2.0.0-Beta2"
 jackson = "2.16.1"
 
 [libraries]
-foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.7.0" }
+foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.8.0" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 jackson-bom = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
