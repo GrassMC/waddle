@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.0.0-Beta2"
-jackson = "2.16.1"
+jackson = "2.17.1"
 
 [libraries]
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.7.0" }
