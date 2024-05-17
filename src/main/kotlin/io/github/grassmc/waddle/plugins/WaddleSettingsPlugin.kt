@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 GrassMC
+ * Copyright 2024 GrassMC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,12 @@
  * limitations under the License.
  */
 
-package io.github.grassmc.infra.modules
+package io.github.grassmc.waddle.plugins
 
-import org.gradle.api.Project
+import org.gradle.api.Plugin
+import org.gradle.api.initialization.Settings
 
-interface ModuleBindingPart {
-    val project: Project
-    val manifest: ModuleManifest
-
-    val needToApply get() = false
-
-    fun beforeEvaluate() = Unit
-
-    fun afterEvaluate() = Unit
+@Suppress("unused")
+abstract class WaddleSettingsPlugin : Plugin<Settings> {
+    override fun apply(settings: Settings) = Unit
 }
-
-data class BindingPartCtx(override val project: Project, override val manifest: ModuleManifest) : ModuleBindingPart
-
-internal val ModuleBindingPart.settings get() = requireNotNull(manifest.settings) { "Module settings is null" }
