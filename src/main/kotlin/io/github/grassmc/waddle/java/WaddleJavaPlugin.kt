@@ -26,6 +26,7 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JvmVendorSpec
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 
 /**
@@ -38,8 +39,15 @@ abstract class WaddleJavaPlugin : WaddlePlugin<Project>() {
     override fun applyPlugins() = listOf(JavaPlugin::class)
 
     override fun init(target: Project) {
+        target.configureDefaultRepositories()
         val waddleJvm = target.createWaddleJvmExtension()
         target.configureJavaTarget(waddleJvm.target.get())
+    }
+
+    private fun Project.configureDefaultRepositories() {
+        repositories {
+            mavenCentral()
+        }
     }
 
     private fun Project.createWaddleJvmExtension() =
