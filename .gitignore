@@ -4,7 +4,6 @@ build
 
 ### InteliJ IDEA
 .idea/*
-!.idea/codeStyles
 !.idea/copyright
 !.idea/inspectionProfiles
 !.idea/scopes
