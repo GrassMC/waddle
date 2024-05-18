@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation(libs.foojay.resolver)
     implementation(embeddedKotlin("gradle-plugin"))
+    implementation(libs.run.task)
+    implementation(libs.paperweight.userdev)
 }
 
 val jdkVersion = 17
@@ -44,6 +46,14 @@ gradlePlugin {
         register("waddleKotlin") {
             id = "io.github.grassmc.waddle-kotlin"
             implementationClass = "io.github.grassmc.waddle.kotlin.WaddleKotlinPlugin"
+        }
+        register("waddlePaper") {
+            id = "io.github.grassmc.waddle-paper"
+            implementationClass = "io.github.grassmc.waddle.paper.WaddlePaperPlugin"
+        }
+        register("waddlePaperInternal") {
+            id = "io.github.grassmc.waddle-paper.internal"
+            implementationClass = "io.github.grassmc.waddle.paper.WaddlePaperInternalPlugin"
         }
     }
 }

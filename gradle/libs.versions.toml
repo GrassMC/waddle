@@ -1,8 +1,8 @@
 [libraries]
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.8.0" }
 asm = { module = "org.ow2.asm:asm", version = "9.6" }
-paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version = "1.5.11" }
-run-task = { module = "xyz.jpenilla:run-task", version = "2.2.2" }
+paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version = "1.7.1" }
+run-task = { module = "xyz.jpenilla:run-task", version = "2.3.0" }
 
 [plugins]
 plugin-publish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
