@@ -19,7 +19,7 @@
     }
     
     plugins {
-        id("io.github.grassmc.waddle") version "1.0.0-SNAPSHOT"
+        id("io.github.grassmc.waddle") version "1.0.0"
     }
     ```
 
