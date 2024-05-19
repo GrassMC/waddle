@@ -1,7 +1,7 @@
 name: Gradle plugin deploy
 on:
   workflow_run:
-    workflows: [ Plugin CI ]
+    workflows: [ Gradle plugin build ]
     types: [ completed ]
     branches: [ main ]
 
