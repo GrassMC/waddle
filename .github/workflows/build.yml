@@ -2,11 +2,19 @@ name: Gradle plugin build
 on:
   push:
     branches: [ main ]
-    paths-ignore: [ README.md, gradle.properties, .github/.release-please-manifest.json ]
+    paths-ignore:
+      - README.md
+      - gradle.properties
+      - .github/.release-please-manifest.json
+      - .github/renovate.json
 
   pull_request:
     types: [ opened, synchronize, reopened ]
-    paths-ignore: [ README.md, gradle.properties, .github/.release-please-manifest.json ]
+    paths-ignore:
+      - README.md
+      - gradle.properties
+      - .github/.release-please-manifest.json
+      - .github/renovate.json
 
 jobs:
   build:
