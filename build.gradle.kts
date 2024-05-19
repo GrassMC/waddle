@@ -15,6 +15,7 @@ dependencies {
     implementation(embeddedKotlin("gradle-plugin"))
     implementation(libs.run.task)
     implementation(libs.paperweight.userdev)
+    implementation(libs.shadow)
 }
 
 val jdkVersion = 17
@@ -54,6 +55,10 @@ gradlePlugin {
         register("waddlePaperInternal") {
             id = "io.github.grassmc.waddle-paper.internal"
             implementationClass = "io.github.grassmc.waddle.paper.WaddlePaperInternalPlugin"
+        }
+        register("waddleShadow") {
+            id = "io.github.grassmc.waddle-shadow"
+            implementationClass = "io.github.grassmc.waddle.shadow.WaddleShadowPlugin"
         }
     }
 }
