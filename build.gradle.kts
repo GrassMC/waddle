@@ -2,6 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
+    signing
+    `maven-publish`
     alias(libs.plugins.plugin.publish)
 }
 
@@ -59,6 +61,21 @@ gradlePlugin {
         register("waddleShadow") {
             id = "io.github.grassmc.waddle-shadow"
             implementationClass = "io.github.grassmc.waddle.shadow.WaddleShadowPlugin"
+        }
+    }
+}
+
+signing {
+    val signingKeyId: String? by project
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+}
+
+publishing {
+    repositories {
+        maven("https://maven.nguyenthanhtan.id.vn/releases") {
+            name = "tozydevReleases"
         }
     }
 }
