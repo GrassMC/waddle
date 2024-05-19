@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-package io.github.grassmc.waddle.plugins
+package io.github.grassmc.waddle.settings
 
-import org.gradle.api.Plugin
+import io.github.grassmc.waddle.WaddlePlugin
 import org.gradle.api.initialization.Settings
+import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
 
+/**
+ * Base [Settings] plugin for waddle plugins.
+ *
+ * By default, this plugin applies the [FoojayToolchainsConventionPlugin] to configure the toolchains for the project.
+ */
 @Suppress("unused")
-abstract class WaddleSettingsPlugin : Plugin<Settings> {
-    override fun apply(settings: Settings) = Unit
+abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
+    override fun applyPlugins() = listOf(FoojayToolchainsConventionPlugin::class)
 }

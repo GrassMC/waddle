@@ -1,16 +1,9 @@
-[versions]
-kotlin = "2.0.0-Beta2"
-jackson = "2.16.1"
-
 [libraries]
-foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.7.0" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-jackson-bom = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson" }
-jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
-jackson-dataformat-yaml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml" }
+foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.8.0" }
 asm = { module = "org.ow2.asm:asm", version = "9.6" }
-paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version = "1.5.11" }
-run-task = { module = "xyz.jpenilla:run-task", version = "2.2.2" }
+paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version = "1.7.1" }
+run-task = { module = "xyz.jpenilla:run-task", version = "2.3.0" }
+shadow = { module = "io.github.goooler.shadow:shadow-gradle-plugin", version = "8.1.7" }
 
 [plugins]
-com-gradle-plugin-publish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+plugin-publish = { id = "com.gradle.plugin-publish", version = "1.2.1" }

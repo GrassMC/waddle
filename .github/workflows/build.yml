@@ -1,0 +1,40 @@
+name: Gradle plugin build
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - README.md
+      - gradle.properties
+      - .github/.release-please-manifest.json
+      - .github/renovate.json
+
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths-ignore:
+      - README.md
+      - gradle.properties
+      - .github/.release-please-manifest.json
+      - .github/renovate.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          validate-wrappers: true
+          gradle-home-cache-cleanup: true
+          add-job-summary-as-pr-comment: on-failure
+
+      - name: Build with Gradle
+        run: gradle build
