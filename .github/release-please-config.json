@@ -4,7 +4,7 @@
     ".": {
       "release-type": "java",
       "include-component-in-tag": false,
-      "initial-version": "1.0.0",
+      "initial-version": "0.1.0",
       "extra-files": [
         "gradle.properties",
         "README.md"
