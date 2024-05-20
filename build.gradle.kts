@@ -2,8 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
-    signing
-    `maven-publish`
+    alias(libs.plugins.maven.publish)
     alias(libs.plugins.plugin.publish)
 }
 
@@ -65,14 +64,8 @@ gradlePlugin {
     }
 }
 
-signing {
-    val signingKeyId: String? by project
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-}
-
-publishing {
+mavenPublishing {
+    signAllPublications()
     repositories {
         maven("https://maven.nguyenthanhtan.id.vn/releases") {
             name = "tozydevReleases"

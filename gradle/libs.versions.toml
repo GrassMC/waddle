@@ -6,3 +6,4 @@ shadow = { module = "io.github.goooler.shadow:shadow-gradle-plugin", version = "
 
 [plugins]
 plugin-publish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+maven-publish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
