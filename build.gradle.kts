@@ -64,11 +64,15 @@ gradlePlugin {
     }
 }
 
-mavenPublishing {
-    signAllPublications()
+publishing {
     repositories {
         maven("https://maven.nguyenthanhtan.id.vn/releases") {
             name = "tozydevReleases"
+            credentials(PasswordCredentials::class)
         }
     }
+}
+
+mavenPublishing {
+    signAllPublications()
 }
