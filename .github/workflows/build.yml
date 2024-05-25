@@ -18,4 +18,4 @@ on:
 
 jobs:
   call-build:
-    uses: GrassMC/.github/workflows/shared-gradle-build.yml@main
+    uses: GrassMC/.github/.github/workflows/shared-gradle-build.yml@main

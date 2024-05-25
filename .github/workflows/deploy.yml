@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-release:
-    uses: GrassMC/.github/workflows/shared-release.yml@main
+    uses: GrassMC/.github/.github/workflows/shared-release.yml@main
     permissions:
       contents: write
       pull-requests: write
@@ -15,7 +15,7 @@ jobs:
   call-publish:
     needs: [ call-release ]
     if: ${{ needs.call-release.outputs.release-created == 'true' }}
-    uses: GrassMC/.github/workflows/shared-gradle-publish-tozydev.yml@main
+    uses: GrassMC/.github/.github/workflows/shared-gradle-publish-tozydev.yml@main
     secrets: inherit
     concurrency:
       cancel-in-progress: true
