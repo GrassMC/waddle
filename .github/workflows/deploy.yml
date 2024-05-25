@@ -5,57 +5,18 @@ on:
     types: [ completed ]
     branches: [ main ]
 
-concurrency:
-  group: gradle-plugin-deploy
-  cancel-in-progress: true
-
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  call-release:
+    uses: GrassMC/.github/.github/workflows/shared-release.yml@main
     permissions:
       contents: write
       pull-requests: write
 
-    outputs:
-      release-created: ${{ steps.release.outputs.release_created }}
-
-    steps:
-      - name: Release Please Action
-        id: release
-        uses: googleapis/release-please-action@v4
-        with:
-          config-file: .github/release-please-config.json
-          manifest-file: .github/.release-please-manifest.json
-
-  publish:
-    needs: [ release ]
-    if: ${{ needs.release.outputs.release-created == 'true' }}
-    runs-on: ubuntu-latest
-    environment:
-      name: Tozydev Repository
-      url: https://maven.nguyenthanhtan.id.vn
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: zulu
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          validate-wrappers: true
-          gradle-home-cache-cleanup: true
-
-      - name: Build with Gradle
-        run: gradle build publish
-        env:
-          ORG_GRADLE_PROJECT_tozydevReleasesUsername: ${{ secrets.TOZYDEV_RELEASES_USERNAME }}
-          ORG_GRADLE_PROJECT_tozydevReleasesPassword: ${{ secrets.TOZYDEV_RELEASES_PASSWORD }}
-          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
-          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingInMemoryPassword: ${{ secrets.SIGNING_PASSWORD }}
+  call-publish:
+    needs: [ call-release ]
+    if: ${{ needs.call-release.outputs.release-created == 'true' }}
+    uses: GrassMC/.github/.github/workflows/shared-gradle-publish-tozydev.yml@main
+    secrets: inherit
+    concurrency:
+      cancel-in-progress: true
+      group: gradle-plugin-publish
