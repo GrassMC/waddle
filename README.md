@@ -1,10 +1,8 @@
-# infra-gradle
+# waddle
 
 🧰 A Gradle plugin that helps us to manage GrassMC projects
 
 ## Usage
-
-<!-- x-release-please-start-version -->
 
 1. Apply the plugin in your `settings.gradle.kts` file.
 
@@ -19,7 +17,7 @@
     }
     
     plugins {
-        id("io.github.grassmc.waddle") version "1.0.1-SNAPSHOT"
+        id("io.github.grassmc.waddle") version "1.0.0"
     }
     ```
 
@@ -31,8 +29,6 @@
     - `io.github.grassmc.waddle-paper.internal`: Plugin for Paper plugin development with internal dependencies (knows
       as NMS).
     - `io.github.grassmc.waddle-shadow`: Conventions for Shadow plugin.
-
-<!-- x-release-please-end -->
 
 ## License
 

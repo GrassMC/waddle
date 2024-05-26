@@ -6,8 +6,7 @@
       "include-component-in-tag": false,
       "initial-version": "0.1.0",
       "extra-files": [
-        "gradle.properties",
-        "README.md"
+        "gradle.properties"
       ]
     }
   }
