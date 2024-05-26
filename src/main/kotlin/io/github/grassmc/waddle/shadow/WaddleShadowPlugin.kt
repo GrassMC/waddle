@@ -17,6 +17,7 @@
 package io.github.grassmc.waddle.shadow
 
 import com.github.jengelman.gradle.plugins.shadow.ShadowJavaPlugin
+import com.github.jengelman.gradle.plugins.shadow.ShadowPlugin
 import io.github.grassmc.waddle.WaddlePlugin
 import io.github.grassmc.waddle.paper.WaddlePaperPlugin
 import org.gradle.api.Project
@@ -28,7 +29,7 @@ import org.gradle.language.base.plugins.LifecycleBasePlugin
  */
 @Suppress("unused")
 abstract class WaddleShadowPlugin : WaddlePlugin<Project>() {
-    override fun applyPlugins() = setOf(ShadowJavaPlugin::class)
+    override fun applyPlugins() = setOf(ShadowPlugin::class)
 
     override fun init(target: Project) {
         target.configureTaskDependencies()
