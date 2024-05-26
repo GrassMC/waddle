@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.1](https://github.com/GrassMC/waddle/compare/v1.0.0...v1.0.1) (2024-05-26)
+
+
+### Bug Fixes
+
+* apply wrong shadow plugin class ([#25](https://github.com/GrassMC/waddle/issues/25)) ([dbdd773](https://github.com/GrassMC/waddle/commit/dbdd773d1a295f17ca8ecb129c79f4e48d1ecd96))
+
+
+### Documentation
+
+* update README [skip ci] ([da92202](https://github.com/GrassMC/waddle/commit/da92202b912658d9bf3bed2aaf08917ffd3c198c))
+
 ## [1.0.0](https://github.com/GrassMC/waddle/compare/v1.0.0-SNAPSHOT...v1.0.0) (2024-05-20)
 
 
