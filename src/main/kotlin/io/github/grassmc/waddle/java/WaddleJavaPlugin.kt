@@ -19,6 +19,7 @@ package io.github.grassmc.waddle.java
 import io.github.grassmc.waddle.WaddlePlugin
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.artifacts.ArtifactRepositoryContainer
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.tasks.compile.JavaCompile
@@ -46,7 +47,7 @@ abstract class WaddleJavaPlugin : WaddlePlugin<Project>() {
 
     private fun Project.configureDefaultRepositories() {
         repositories {
-            mavenCentral()
+            findByName(ArtifactRepositoryContainer.DEFAULT_MAVEN_CENTRAL_REPO_NAME) ?: mavenCentral()
         }
     }
 
