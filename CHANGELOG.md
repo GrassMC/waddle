@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/GrassMC/waddle/compare/v1.0.1...v1.1.0) (2024-05-29)
+
+
+### Features
+
+* configure maven central only if absent ([#31](https://github.com/GrassMC/waddle/issues/31)) ([ee66d31](https://github.com/GrassMC/waddle/commit/ee66d31cdac419ccd6225415b54ba3778ed48e59))
+
 ## [1.0.1](https://github.com/GrassMC/waddle/compare/v1.0.0...v1.0.1) (2024-05-26)
 
 
