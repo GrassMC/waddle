@@ -17,6 +17,7 @@
 package io.github.grassmc.waddle.kotlin
 
 import io.github.grassmc.waddle.WaddlePlugin
+import io.github.grassmc.waddle.configureDefaultRepositories
 import io.github.grassmc.waddle.java.WaddleJavaPlugin.Companion.DEFAULT_JDK_VERSION
 import io.github.grassmc.waddle.java.WaddleJvmExtension
 import org.gradle.api.Project
@@ -39,6 +40,7 @@ abstract class WaddleKotlinPlugin : WaddlePlugin<Project>() {
     override fun applyPlugins() = listOf(KotlinPluginWrapper::class)
 
     override fun init(target: Project) {
+        target.configureDefaultRepositories()
         target.configureJvmTarget()
     }
 
