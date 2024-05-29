@@ -17,9 +17,9 @@
 package io.github.grassmc.waddle.java
 
 import io.github.grassmc.waddle.WaddlePlugin
+import io.github.grassmc.waddle.configureDefaultRepositories
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.api.artifacts.ArtifactRepositoryContainer
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.tasks.compile.JavaCompile
@@ -27,7 +27,6 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JvmVendorSpec
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 
 /**
@@ -43,12 +42,6 @@ abstract class WaddleJavaPlugin : WaddlePlugin<Project>() {
         target.configureDefaultRepositories()
         val waddleJvm = target.createWaddleJvmExtension()
         target.configureJavaTarget(waddleJvm.target.get())
-    }
-
-    private fun Project.configureDefaultRepositories() {
-        repositories {
-            findByName(ArtifactRepositoryContainer.DEFAULT_MAVEN_CENTRAL_REPO_NAME) ?: mavenCentral()
-        }
     }
 
     private fun Project.createWaddleJvmExtension() =
