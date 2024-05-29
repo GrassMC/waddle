@@ -1,5 +1,8 @@
 # waddle
 
+[![GitHub Release](https://img.shields.io/github/v/release/GrassMC/waddle)](https://github.com/GrassMC/waddle/releases/)
+[![GitHub deployments](https://img.shields.io/github/deployments/GrassMC/waddle/Tozydev%20Repository?label=publish)](https://maven.nguyenthanhtan.id.vn/)
+
 🧰 A Gradle plugin that helps us to manage GrassMC projects
 
 ## Usage
@@ -17,7 +20,7 @@
     }
     
     plugins {
-        id("io.github.grassmc.waddle") version "1.0.0"
+        id("io.github.grassmc.waddle") version "1.1.0"
     }
     ```
 
