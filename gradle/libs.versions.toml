@@ -1,5 +1,9 @@
+[versions]
+kotlin = "2.0.0"
+
 [libraries]
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.8.0" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version = "1.7.1" }
 run-task = { module = "xyz.jpenilla:run-task", version = "2.3.0" }
 shadow = { module = "io.github.goooler.shadow:shadow-gradle-plugin", version = "8.1.7" }
