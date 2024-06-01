@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     implementation(libs.foojay.resolver)
-    implementation(embeddedKotlin("gradle-plugin"))
+    implementation(libs.kotlin.gradle.plugin)
     implementation(libs.run.task)
     implementation(libs.paperweight.userdev)
     implementation(libs.shadow)

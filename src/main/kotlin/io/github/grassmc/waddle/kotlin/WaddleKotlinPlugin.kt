@@ -25,10 +25,9 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JvmVendorSpec
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.findByType
-import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /**
  * This class represents the wrapper for the `kotlin-jvm` plugin.
@@ -51,9 +50,9 @@ abstract class WaddleKotlinPlugin : WaddlePlugin<Project>() {
                 languageVersion.convention(JavaLanguageVersion.of(jdkVersion))
                 vendor.convention(JvmVendorSpec.AZUL)
             }
-        }
-        project.tasks.withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = jdkVersion.toString()
+            compilerOptions {
+                jvmTarget.convention(JvmTarget.fromTarget(jdkVersion.toString()))
+            }
         }
     }
 }
