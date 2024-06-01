@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/GrassMC/waddle/compare/v1.1.0...v1.2.0) (2024-06-01)
+
+
+### Features
+
+* upgrade to Kotlin 2.0 ([#37](https://github.com/GrassMC/waddle/issues/37)) ([f32468f](https://github.com/GrassMC/waddle/commit/f32468fab550e619167746e51e760283a321d9da))
+
+
+### Documentation
+
+* update readme [skip ci] ([235f4a9](https://github.com/GrassMC/waddle/commit/235f4a954d1157f584ba68fb749c411fbec7c642))
+
 ## [1.1.0](https://github.com/GrassMC/waddle/compare/v1.0.1...v1.1.0) (2024-05-29)
 
 
