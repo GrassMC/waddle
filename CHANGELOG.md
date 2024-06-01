@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/GrassMC/waddle/compare/v1.1.0...v1.1.1) (2024-06-01)
+
+
+### Documentation
+
+* update readme [skip ci] ([235f4a9](https://github.com/GrassMC/waddle/commit/235f4a954d1157f584ba68fb749c411fbec7c642))
+
 ## [1.1.0](https://github.com/GrassMC/waddle/compare/v1.0.1...v1.1.0) (2024-05-29)
 
 
