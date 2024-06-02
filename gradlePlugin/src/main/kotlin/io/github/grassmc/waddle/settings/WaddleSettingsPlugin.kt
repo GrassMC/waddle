@@ -28,4 +28,38 @@ import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
 @Suppress("unused")
 abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
     override fun applyPlugins() = listOf(FoojayToolchainsConventionPlugin::class)
+
+    override fun init(target: Settings) {
+        target.createWaddleVersionsCatalog()
+    }
+
+    private fun Settings.createWaddleVersionsCatalog() {
+        dependencyResolutionManagement.versionCatalogs {
+            create(WADDLE_VERSIONS_CATALOG_NAME) {
+                waddleProjectPluginIdsByAlias().forEach { (alias, id) ->
+                    plugin(alias, id).version {}
+                }
+            }
+        }
+    }
+
+    private fun waddleProjectPluginIdsByAlias() =
+        findWaddleProjectPlugins().associateWith { "$WADDLE_PROJECT_PLUGIN_PREFIX$it" }
+
+    private fun findWaddleProjectPlugins() =
+        WaddleSettingsPlugin::class.java.classLoader
+            .getResourceAsStream(WADDLE_PLUGINS_CLASSPATH)!!
+            .bufferedReader()
+            .readLine()
+            .trim()
+            .split(',')
+            .filterNot { it.endsWith(SETTINGS_PLUGIN) }
+
+    companion object {
+        private const val WADDLE_VERSIONS_CATALOG_NAME = "waddle"
+
+        private const val WADDLE_PROJECT_PLUGIN_PREFIX = "io.github.grassmc.waddle-"
+        private const val WADDLE_PLUGINS_CLASSPATH = "waddle-plugins"
+        private const val SETTINGS_PLUGIN = "settings"
+    }
 }
