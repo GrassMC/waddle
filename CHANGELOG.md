@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/GrassMC/waddle/compare/v1.2.0...v2.0.0) (2024-06-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* add `waddle` plugins versions catalog ([#41](https://github.com/GrassMC/waddle/issues/41))
+
+### Features
+
+* add `waddle` plugins versions catalog ([#41](https://github.com/GrassMC/waddle/issues/41)) ([7407f33](https://github.com/GrassMC/waddle/commit/7407f33f991411bf75332029c3a02db3469ce3a1))
+
 ## [1.2.0](https://github.com/GrassMC/waddle/compare/v1.1.0...v1.2.0) (2024-06-01)
 
 
