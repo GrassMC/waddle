@@ -66,3 +66,19 @@ publishing {
 mavenPublishing {
     signAllPublications()
 }
+
+tasks {
+    val writeWaddlePluginsProperty by registering
+
+    jar {
+        from(writeWaddlePluginsProperty)
+    }
+
+    afterEvaluate {
+        writeWaddlePluginsProperty.configure {
+            val waddlePluginsFile = temporaryDir.resolve("waddle-plugins")
+            waddlePluginsFile.writeText(project.property("waddle.plugins").toString())
+            outputs.file(waddlePluginsFile)
+        }
+    }
+}
