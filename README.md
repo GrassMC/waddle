@@ -7,6 +7,8 @@
 
 ## Usage
 
+<!-- x-release-please-released-start-version -->
+
 1. Apply the plugin in your `settings.gradle.kts` file.
 
     ```kotlin
@@ -32,6 +34,8 @@
     - `io.github.grassmc.waddle-paper.internal`: Plugin for Paper plugin development with internal dependencies (knows
       as NMS).
     - `io.github.grassmc.waddle-shadow`: Conventions for Shadow plugin.
+
+<!-- x-release-please-released-end -->
 
 ## License
 
