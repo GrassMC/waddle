@@ -27,29 +27,11 @@ kotlin {
 
 gradlePlugin {
     plugins {
-        register("waddleSettings") {
-            id = "io.github.grassmc.waddle"
-            implementationClass = "io.github.grassmc.waddle.settings.WaddleSettingsPlugin"
-        }
-        register("waddleJava") {
-            id = "io.github.grassmc.waddle-java"
-            implementationClass = "io.github.grassmc.waddle.java.WaddleJavaPlugin"
-        }
-        register("waddleKotlin") {
-            id = "io.github.grassmc.waddle-kotlin"
-            implementationClass = "io.github.grassmc.waddle.kotlin.WaddleKotlinPlugin"
-        }
-        register("waddlePaper") {
-            id = "io.github.grassmc.waddle-paper"
-            implementationClass = "io.github.grassmc.waddle.paper.WaddlePaperPlugin"
-        }
-        register("waddlePaperInternal") {
-            id = "io.github.grassmc.waddle-paper.internal"
-            implementationClass = "io.github.grassmc.waddle.paper.WaddlePaperInternalPlugin"
-        }
-        register("waddleShadow") {
-            id = "io.github.grassmc.waddle-shadow"
-            implementationClass = "io.github.grassmc.waddle.shadow.WaddleShadowPlugin"
+        property("waddle.plugins").toString().trim().split(',').forEach { waddlePlugin ->
+            create(waddlePluginName(waddlePlugin)) {
+                id = waddlePluginId(waddlePlugin)
+                implementationClass = waddlePluginClass(waddlePlugin)
+            }
         }
     }
 }
@@ -81,4 +63,27 @@ tasks {
             outputs.file(waddlePluginsFile)
         }
     }
+}
+
+fun waddlePluginName(waddlePlugin: String) = buildString {
+    append("waddle")
+    for (part in waddlePlugin.split('.')) {
+        append(part.replaceFirstChar { it.uppercase() })
+    }
+    println(toString())
+}
+
+fun waddlePluginId(waddlePlugin: String) =
+    "io.github.grassmc.waddle${if (waddlePlugin == "settings") "" else "-$waddlePlugin"}"
+
+fun waddlePluginClass(waddlePlugin: String) = buildString {
+    append("io.github.grassmc.waddle.")
+    val parts = waddlePlugin.split('.')
+    append(parts.first())
+    append(".Waddle")
+    for (part in parts) {
+        append(part.replaceFirstChar { it.uppercase() })
+    }
+    append("Plugin")
+    println(toString())
 }
