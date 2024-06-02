@@ -1,13 +1,19 @@
 [versions]
+foojay-resolver = "0.8.0"
 kotlin = "2.0.0"
+paperweight = "1.7.1"
+run-task = "2.3.0"
+shadow = "8.1.7"
+plugin-publish = "1.2.1"
+maven-publish = "0.28.0"
 
 [libraries]
-foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version = "0.8.0" }
+foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "foojay-resolver" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version = "1.7.1" }
-run-task = { module = "xyz.jpenilla:run-task", version = "2.3.0" }
-shadow = { module = "io.github.goooler.shadow:shadow-gradle-plugin", version = "8.1.7" }
+paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version.ref = "paperweight" }
+run-task = { module = "xyz.jpenilla:run-task", version.ref = "run-task" }
+shadow = { module = "io.github.goooler.shadow:shadow-gradle-plugin", version.ref = "shadow" }
 
 [plugins]
-plugin-publish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
+plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "plugin-publish" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
