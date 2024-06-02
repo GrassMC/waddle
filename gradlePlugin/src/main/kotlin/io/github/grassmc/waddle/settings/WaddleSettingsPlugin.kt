@@ -19,6 +19,7 @@ package io.github.grassmc.waddle.settings
 import io.github.grassmc.waddle.WaddlePlugin
 import org.gradle.api.initialization.Settings
 import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
+import org.gradle.util.GradleVersion
 
 /**
  * Base [Settings] plugin for waddle plugins.
@@ -30,7 +31,14 @@ abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
     override fun applyPlugins() = listOf(FoojayToolchainsConventionPlugin::class)
 
     override fun init(target: Settings) {
+        checkGradleVersion()
         target.createWaddleVersionsCatalog()
+    }
+
+    private fun checkGradleVersion() {
+        if (GradleVersion.current() < GradleVersion.version(MINIMUM_GRADLE_VERSION)) {
+            throw IllegalStateException("Requires at least Gradle $MINIMUM_GRADLE_VERSION")
+        }
     }
 
     private fun Settings.createWaddleVersionsCatalog() {
@@ -56,6 +64,7 @@ abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
             .filterNot { it.endsWith(SETTINGS_PLUGIN) }
 
     companion object {
+        const val MINIMUM_GRADLE_VERSION = "8.8"
         private const val WADDLE_VERSIONS_CATALOG_NAME = "waddle"
 
         private const val WADDLE_PROJECT_PLUGIN_PREFIX = "io.github.grassmc.waddle-"
