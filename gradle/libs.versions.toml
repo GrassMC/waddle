@@ -5,7 +5,7 @@ paperweight = "1.7.1"
 run-task = "2.3.0"
 shadow = "8.1.7"
 plugin-publish = "1.2.1"
-maven-publish = "0.28.0"
+maven-publish = "0.29.0"
 
 [libraries]
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "foojay-resolver" }
