@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/GrassMC/waddle/compare/v2.0.0...v2.0.1) (2024-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency io.github.goooler.shadow:shadow-gradle-plugin to v8.1.8 ([#45](https://github.com/GrassMC/waddle/issues/45)) ([32420f9](https://github.com/GrassMC/waddle/commit/32420f9aab64778c4c2da8fb4e1e6d660aa7b0c1))
+
 ## [2.0.0](https://github.com/GrassMC/waddle/compare/v1.2.0...v2.0.0) (2024-06-02)
 
 
