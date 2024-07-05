@@ -38,8 +38,8 @@ gradlePlugin {
 
 publishing {
     repositories {
-        maven("https://maven.nguyenthanhtan.id.vn/releases") {
-            name = "tozydevReleases"
+        maven("https://maven.pkg.github.com/GrassMC/waddle") {
+            name = "githubPackages"
             credentials(PasswordCredentials::class)
         }
     }
@@ -47,6 +47,7 @@ publishing {
 
 mavenPublishing {
     signAllPublications()
+    coordinates(artifactId = "waddle-gradle-plugin")
 }
 
 tasks {
@@ -65,25 +66,25 @@ tasks {
     }
 }
 
-fun waddlePluginName(waddlePlugin: String) = buildString {
-    append("waddle")
-    for (part in waddlePlugin.split('.')) {
-        append(part.replaceFirstChar { it.uppercase() })
+fun waddlePluginName(waddlePlugin: String) =
+    buildString {
+        append("waddle")
+        for (part in waddlePlugin.split('.')) {
+            append(part.replaceFirstChar { it.uppercase() })
+        }
     }
-    println(toString())
-}
 
 fun waddlePluginId(waddlePlugin: String) =
     "io.github.grassmc.waddle${if (waddlePlugin == "settings") "" else "-$waddlePlugin"}"
 
-fun waddlePluginClass(waddlePlugin: String) = buildString {
-    append("io.github.grassmc.waddle.")
-    val parts = waddlePlugin.split('.')
-    append(parts.first())
-    append(".Waddle")
-    for (part in parts) {
-        append(part.replaceFirstChar { it.uppercase() })
+fun waddlePluginClass(waddlePlugin: String) =
+    buildString {
+        append("io.github.grassmc.waddle.")
+        val parts = waddlePlugin.split('.')
+        append(parts.first())
+        append(".Waddle")
+        for (part in parts) {
+            append(part.replaceFirstChar { it.uppercase() })
+        }
+        append("Plugin")
     }
-    append("Plugin")
-    println(toString())
-}

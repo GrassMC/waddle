@@ -13,7 +13,7 @@ jobs:
   call-publish:
     needs: [ call-release ]
     if: ${{ needs.call-release.outputs.release-created == 'true' }}
-    uses: GrassMC/.github/.github/workflows/shared-gradle-publish-tozydev.yml@main
+    uses: GrassMC/.github/.github/workflows/shared-gradle-publish-github-packages.yml@main
     secrets: inherit
     concurrency:
       cancel-in-progress: true
