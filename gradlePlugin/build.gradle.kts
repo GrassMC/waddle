@@ -72,7 +72,6 @@ fun waddlePluginName(waddlePlugin: String) =
         for (part in waddlePlugin.split('.')) {
             append(part.replaceFirstChar { it.uppercase() })
         }
-        println(toString())
     }
 
 fun waddlePluginId(waddlePlugin: String) =
@@ -88,5 +87,4 @@ fun waddlePluginClass(waddlePlugin: String) =
             append(part.replaceFirstChar { it.uppercase() })
         }
         append("Plugin")
-        println(toString())
     }
