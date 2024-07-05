@@ -38,8 +38,8 @@ gradlePlugin {
 
 publishing {
     repositories {
-        maven("https://maven.nguyenthanhtan.id.vn/releases") {
-            name = "tozydevReleases"
+        maven("https://maven.pkg.github.com/GrassMC/waddle") {
+            name = "githubPackages"
             credentials(PasswordCredentials::class)
         }
     }
