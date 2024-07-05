@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/GrassMC/waddle/compare/v2.0.1...v2.0.2) (2024-07-05)
+
+
+### Bug Fixes
+
+* missing package write permission ([#49](https://github.com/GrassMC/waddle/issues/49)) ([c727abc](https://github.com/GrassMC/waddle/commit/c727abc8f30ce044ba3611cbaad90a898a11cd0b))
+
 ## [2.0.1](https://github.com/GrassMC/waddle/compare/v2.0.0...v2.0.1) (2024-07-05)
 
 
