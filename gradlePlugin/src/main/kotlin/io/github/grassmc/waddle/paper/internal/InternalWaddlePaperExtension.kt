@@ -30,7 +30,8 @@ import xyz.jpenilla.runpaper.task.RunServer
 internal abstract class InternalWaddlePaperExtension(
     final override val project: Project,
     objects: ObjectFactory,
-) : WaddlePaperExtension, HasProject {
+) : WaddlePaperExtension,
+    HasProject {
     internal val debugServerOptions =
         objects.newInstance<InternalDebugServerOptions>(
             project,
