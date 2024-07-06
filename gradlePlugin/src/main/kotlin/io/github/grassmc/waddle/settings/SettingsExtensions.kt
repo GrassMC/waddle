@@ -34,6 +34,5 @@ fun Settings.subproject(
     project(":$name").projectDir = dir
 }
 
-private fun Settings.buildSubprojectName(dir: File): String {
-    return rootProject.name + "-" + dir.relativeTo(settingsDir).path.replace("/", "-")
-}
+private fun Settings.buildSubprojectName(dir: File): String =
+    rootProject.name + "-" + dir.relativeTo(settingsDir).path.replace("/", "-")

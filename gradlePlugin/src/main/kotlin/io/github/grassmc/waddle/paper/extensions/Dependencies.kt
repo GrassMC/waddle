@@ -18,8 +18,8 @@
 
 package io.github.grassmc.waddle.paper.extensions
 
-import io.github.grassmc.waddle.paper.WaddlePaperPlugin
+import io.github.grassmc.waddle.DEFAULT_MINECRAFT_VERSION
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-fun DependencyHandler.paperApi(minecraftVersion: String = WaddlePaperPlugin.DEFAULT_MINECRAFT_VERSION) =
+fun DependencyHandler.paperApi(minecraftVersion: String = DEFAULT_MINECRAFT_VERSION) =
     "io.papermc.paper:paper-api:$minecraftVersion-R0.1-SNAPSHOT"

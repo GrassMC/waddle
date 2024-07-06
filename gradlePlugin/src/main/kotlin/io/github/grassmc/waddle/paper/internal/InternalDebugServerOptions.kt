@@ -30,7 +30,8 @@ internal abstract class InternalDebugServerOptions
     constructor(
         final override val project: Project,
         private val runServerTask: TaskProvider<RunServer>,
-    ) : DebugServerOptions, HasProject {
+    ) : DebugServerOptions,
+        HasProject {
         override fun downloadPlugins(spec: DownloadPluginsSpec.() -> Unit) =
             project.afterEvaluate {
                 runServerTask.configure {

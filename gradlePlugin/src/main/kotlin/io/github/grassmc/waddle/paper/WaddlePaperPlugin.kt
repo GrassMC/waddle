@@ -16,6 +16,7 @@
 
 package io.github.grassmc.waddle.paper
 
+import io.github.grassmc.waddle.DEFAULT_MINECRAFT_VERSION
 import io.github.grassmc.waddle.WaddlePlugin
 import io.github.grassmc.waddle.paper.extensions.paperApi
 import io.github.grassmc.waddle.paper.extensions.paperMc
@@ -74,13 +75,9 @@ abstract class WaddlePaperPlugin : WaddlePlugin<Project>() {
     }
 
     private fun Project.createWaddlePaperExtension() =
-        extensions.create(
-            WaddlePaperExtension::class,
-            WADDLE_PAPER_EXTENSION_NAME,
-            InternalWaddlePaperExtension::class,
-        ).apply {
-            minecraftVersion.convention(DEFAULT_MINECRAFT_VERSION)
-        }
+        extensions
+            .create(WaddlePaperExtension::class, WADDLE_PAPER_EXTENSION_NAME, InternalWaddlePaperExtension::class)
+            .apply { minecraftVersion.convention(DEFAULT_MINECRAFT_VERSION) }
 
     private fun Project.setupProcessPluginYml() {
         val processPaperPluginYml =
@@ -107,7 +104,6 @@ abstract class WaddlePaperPlugin : WaddlePlugin<Project>() {
 
     companion object {
         internal const val WADDLE_PAPER_EXTENSION_NAME = "paper"
-        internal const val DEFAULT_MINECRAFT_VERSION = "1.20.6"
 
         internal const val RUN_SERVER_TASK_NAME = "runServer"
         private const val RUN_SERVER_DIR_NAME = ".run-server"

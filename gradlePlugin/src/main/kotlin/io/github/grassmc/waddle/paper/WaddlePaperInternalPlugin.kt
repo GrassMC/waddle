@@ -47,7 +47,8 @@ abstract class WaddlePaperInternalPlugin : WaddlePlugin<Project>() {
         }
         val minecraftVersion = extensions.getByType<WaddlePaperExtension>().minecraftVersion.get()
         dependencies {
-            extensions.getByType<PaperweightUserDependenciesExtension>()
+            extensions
+                .getByType<PaperweightUserDependenciesExtension>()
                 .paperDevBundle("$minecraftVersion-R0.1-SNAPSHOT")
         }
         plugins.withType<WaddlePaperPlugin> {

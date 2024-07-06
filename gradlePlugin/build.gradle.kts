@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -32,6 +34,7 @@ gradlePlugin {
             create(waddlePluginName(waddlePlugin)) {
                 id = waddlePluginId(waddlePlugin)
                 implementationClass = waddlePluginClass(waddlePlugin)
+                tags = setOf(waddlePlugin)
             }
         }
     }
@@ -51,25 +54,15 @@ mavenPublishing {
     coordinates(artifactId = "waddle-gradle-plugin")
 }
 
-tasks {
-    val writeWaddlePluginsProperty by registering
-
-    jar {
-        from(writeWaddlePluginsProperty)
-    }
-
-    afterEvaluate {
-        writeWaddlePluginsProperty.configure {
-            val waddlePluginsFile = temporaryDir.resolve("waddle-plugins")
-            waddlePluginsFile.writeText(project.property("waddle.plugins").toString())
-            outputs.file(waddlePluginsFile)
-        }
-    }
-}
-
 buildConfig {
     packageName = "io.github.grassmc.waddle"
-    buildConfigField("KOTLIN_VERSION", libs.versions.kotlin)
+    useKotlinOutput {
+        topLevelConstants = true
+    }
+
+    buildConfigField("DEFAULT_KOTLIN_VERSION", libs.versions.kotlin)
+    buildConfigField("DEFAULT_MINECRAFT_VERSION", libs.versions.minecraft)
+    buildConfigField("WADDLE_PLUGINS", provider { gradlePlugin.plugins.associate { it.tags.get().first() to it.id } })
 }
 
 fun waddlePluginName(waddlePlugin: String) =

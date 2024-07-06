@@ -7,6 +7,8 @@ shadow = "8.1.8"
 plugin-publish = "1.2.1"
 maven-publish = "0.29.0"
 buildconfig = "5.3.5"
+# This version will stick with the latest stable Paper build
+minecraft = "1.20.6"
 
 [libraries]
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "foojay-resolver" }
