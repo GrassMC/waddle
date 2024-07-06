@@ -22,7 +22,7 @@
     }
     
     plugins {
-        id("io.github.grassmc.waddle") version "2.0.2"
+        id("io.github.grassmc.waddle") version "2.1.0"
     }
     ```
 
