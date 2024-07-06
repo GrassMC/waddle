@@ -27,6 +27,7 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JvmVendorSpec
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.withType
 
 /**
@@ -34,20 +35,14 @@ import org.gradle.kotlin.dsl.withType
  *
  * It configures the target version of the JVM for the project.
  */
-@Suppress("unused")
 abstract class WaddleJavaPlugin : WaddlePlugin<Project>() {
     override fun applyPlugins() = listOf(JavaPlugin::class)
 
     override fun init(target: Project) {
         target.configureDefaultRepositories()
-        val waddleJvm = target.createWaddleJvmExtension()
+        val waddleJvm = target.getOrCreateJvmExtension()
         target.configureJavaTarget(waddleJvm.target.get())
     }
-
-    private fun Project.createWaddleJvmExtension() =
-        extensions.create<WaddleJvmExtension>(WADDLE_JVM_EXTENSION_NAME).apply {
-            target.convention(DEFAULT_JDK_VERSION)
-        }
 
     private fun Project.configureJavaTarget(version: Int) {
         extensions.configure<JavaPluginExtension> {
@@ -66,7 +61,15 @@ abstract class WaddleJavaPlugin : WaddlePlugin<Project>() {
     }
 
     companion object {
-        internal const val WADDLE_JVM_EXTENSION_NAME = "jvm"
+        private const val WADDLE_JVM_EXTENSION_NAME = "jvm"
         internal const val DEFAULT_JDK_VERSION = 21
+
+        internal fun Project.getOrCreateJvmExtension() =
+            extensions.findByType<WaddleJvmExtension>() ?: createWaddleJvmExtension()
+
+        private fun Project.createWaddleJvmExtension() =
+            extensions.create<WaddleJvmExtension>(WADDLE_JVM_EXTENSION_NAME).apply {
+                target.convention(DEFAULT_JDK_VERSION)
+            }
     }
 }

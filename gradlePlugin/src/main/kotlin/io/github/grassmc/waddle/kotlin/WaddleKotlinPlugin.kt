@@ -19,12 +19,11 @@ package io.github.grassmc.waddle.kotlin
 import io.github.grassmc.waddle.WaddlePlugin
 import io.github.grassmc.waddle.configureDefaultRepositories
 import io.github.grassmc.waddle.java.WaddleJavaPlugin.Companion.DEFAULT_JDK_VERSION
-import io.github.grassmc.waddle.java.WaddleJvmExtension
+import io.github.grassmc.waddle.java.WaddleJavaPlugin.Companion.getOrCreateJvmExtension
 import org.gradle.api.Project
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.jvm.toolchain.JvmVendorSpec
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.findByType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
@@ -44,7 +43,7 @@ abstract class WaddleKotlinPlugin : WaddlePlugin<Project>() {
     }
 
     private fun Project.configureJvmTarget() {
-        val jdkVersion = extensions.findByType<WaddleJvmExtension>()?.target?.orNull ?: DEFAULT_JDK_VERSION
+        val jdkVersion = getOrCreateJvmExtension().target.orNull ?: DEFAULT_JDK_VERSION
         project.extensions.configure<KotlinJvmProjectExtension> {
             jvmToolchain {
                 languageVersion.convention(JavaLanguageVersion.of(jdkVersion))
