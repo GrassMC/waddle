@@ -17,6 +17,7 @@
 package io.github.grassmc.waddle.settings
 
 import io.github.grassmc.waddle.BuildConfig.KOTLIN_VERSION
+import io.github.grassmc.waddle.BuildConfig.WADDLE_PLUGINS
 import io.github.grassmc.waddle.WaddlePlugin
 import org.gradle.api.initialization.Settings
 import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
@@ -46,31 +47,17 @@ abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
         dependencyResolutionManagement.versionCatalogs {
             create(WADDLE_VERSIONS_CATALOG_NAME) {
                 version("kotlin", KOTLIN_VERSION)
-                waddleProjectPluginIdsByAlias().forEach { (alias, id) ->
+                WADDLE_PLUGINS.filterNot { it.key == SETTINGS_PLUGIN }.forEach { (alias, id) ->
                     plugin(alias, id).version {}
                 }
             }
         }
     }
 
-    private fun waddleProjectPluginIdsByAlias() =
-        findWaddleProjectPlugins().associateWith { "$WADDLE_PROJECT_PLUGIN_PREFIX$it" }
-
-    private fun findWaddleProjectPlugins() =
-        WaddleSettingsPlugin::class.java.classLoader
-            .getResourceAsStream(WADDLE_PLUGINS_CLASSPATH)!!
-            .bufferedReader()
-            .readLine()
-            .trim()
-            .split(',')
-            .filterNot { it.endsWith(SETTINGS_PLUGIN) }
-
     companion object {
         const val MINIMUM_GRADLE_VERSION = "8.8"
         private const val WADDLE_VERSIONS_CATALOG_NAME = "waddle"
 
-        private const val WADDLE_PROJECT_PLUGIN_PREFIX = "io.github.grassmc.waddle-"
-        private const val WADDLE_PLUGINS_CLASSPATH = "waddle-plugins"
         private const val SETTINGS_PLUGIN = "settings"
     }
 }
