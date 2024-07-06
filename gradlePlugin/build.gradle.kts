@@ -56,7 +56,12 @@ mavenPublishing {
 
 buildConfig {
     packageName = "io.github.grassmc.waddle"
-    buildConfigField("KOTLIN_VERSION", libs.versions.kotlin)
+    useKotlinOutput {
+        topLevelConstants = true
+    }
+
+    buildConfigField("DEFAULT_KOTLIN_VERSION", libs.versions.kotlin)
+    buildConfigField("DEFAULT_MINECRAFT_VERSION", libs.versions.minecraft)
     buildConfigField("WADDLE_PLUGINS", provider { gradlePlugin.plugins.associate { it.tags.get().first() to it.id } })
 }
 
