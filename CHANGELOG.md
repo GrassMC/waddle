@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/GrassMC/waddle/compare/v2.0.2...v2.1.0) (2024-07-06)
+
+
+### Features
+
+* add kotlin version in waddle versions catalog ([#53](https://github.com/GrassMC/waddle/issues/53)) ([616ce3e](https://github.com/GrassMC/waddle/commit/616ce3e5c02f260fd2e17316d3d979ab21cd7dea))
+* allow to configure jvm extension without apply java plugin ([#56](https://github.com/GrassMC/waddle/issues/56)) ([02c2581](https://github.com/GrassMC/waddle/commit/02c25812abb437a56ed8ba507402d5bb8bbc80e3))
+
 ## [2.0.2](https://github.com/GrassMC/waddle/compare/v2.0.1...v2.0.2) (2024-07-05)
 
 
