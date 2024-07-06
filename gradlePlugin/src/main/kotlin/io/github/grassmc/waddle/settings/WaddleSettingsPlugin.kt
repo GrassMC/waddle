@@ -16,6 +16,7 @@
 
 package io.github.grassmc.waddle.settings
 
+import io.github.grassmc.waddle.BuildConfig.KOTLIN_VERSION
 import io.github.grassmc.waddle.WaddlePlugin
 import org.gradle.api.initialization.Settings
 import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
@@ -44,6 +45,7 @@ abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
     private fun Settings.createWaddleVersionsCatalog() {
         dependencyResolutionManagement.versionCatalogs {
             create(WADDLE_VERSIONS_CATALOG_NAME) {
+                version("kotlin", KOTLIN_VERSION)
                 waddleProjectPluginIdsByAlias().forEach { (alias, id) ->
                     plugin(alias, id).version {}
                 }

@@ -4,6 +4,7 @@ plugins {
     `kotlin-dsl`
     alias(libs.plugins.maven.publish)
     alias(libs.plugins.plugin.publish)
+    alias(libs.plugins.buildconfig)
 }
 
 dependencies {
@@ -64,6 +65,11 @@ tasks {
             outputs.file(waddlePluginsFile)
         }
     }
+}
+
+buildConfig {
+    packageName = "io.github.grassmc.waddle"
+    buildConfigField("KOTLIN_VERSION", libs.versions.kotlin)
 }
 
 fun waddlePluginName(waddlePlugin: String) =
