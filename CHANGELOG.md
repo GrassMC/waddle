@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/GrassMC/waddle/compare/v2.1.0...v2.2.0) (2024-07-07)
+
+
+### Features
+
+* kotlin libs in waddle version catalog ([#60](https://github.com/GrassMC/waddle/issues/60)) ([905dab9](https://github.com/GrassMC/waddle/commit/905dab9a374b6e7c28fbc068a09b1635d4aa4aeb))
+
 ## [2.1.0](https://github.com/GrassMC/waddle/compare/v2.0.2...v2.1.0) (2024-07-06)
 
 
