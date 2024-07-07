@@ -16,10 +16,8 @@
 
 package io.github.grassmc.waddle.settings
 
-import io.github.grassmc.waddle.DEFAULT_KOTLIN_VERSION
-import io.github.grassmc.waddle.DEFAULT_MINECRAFT_VERSION
-import io.github.grassmc.waddle.WADDLE_PLUGINS
 import io.github.grassmc.waddle.WaddlePlugin
+import io.github.grassmc.waddle.settings.WaddleVersionCatalogCreator.create
 import org.gradle.api.initialization.Settings
 import org.gradle.toolchains.foojay.FoojayToolchainsConventionPlugin
 import org.gradle.util.GradleVersion
@@ -46,20 +44,11 @@ abstract class WaddleSettingsPlugin : WaddlePlugin<Settings>() {
 
     private fun Settings.createWaddleVersionsCatalog() {
         dependencyResolutionManagement.versionCatalogs {
-            create(WADDLE_VERSIONS_CATALOG_NAME) {
-                version("kotlin", DEFAULT_KOTLIN_VERSION)
-                version("minecraft", DEFAULT_MINECRAFT_VERSION)
-                WADDLE_PLUGINS.filterNot { it.key == SETTINGS_PLUGIN }.forEach { (alias, id) ->
-                    plugin(alias, id).version {}
-                }
-            }
+            create()
         }
     }
 
     companion object {
         const val MINIMUM_GRADLE_VERSION = "8.8"
-        private const val WADDLE_VERSIONS_CATALOG_NAME = "waddle"
-
-        private const val SETTINGS_PLUGIN = "settings"
     }
 }

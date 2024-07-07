@@ -10,6 +10,13 @@ buildconfig = "5.3.5"
 # This version will stick with the latest stable Paper build
 minecraft = "1.20.6"
 
+kotlinx-collections-immutable = "0.3.7"
+kotlinx-io = "0.4.0"
+kotlinx-atomicfu = "0.25.0"
+kotlinx-datetime = "0.6.0"
+kotlinx-coroutines = "1.9.0-RC"
+kotlinx-serialization = "1.7.1"
+
 [libraries]
 foojay-resolver = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "foojay-resolver" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
