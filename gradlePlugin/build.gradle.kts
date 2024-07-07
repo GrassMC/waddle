@@ -59,9 +59,20 @@ buildConfig {
     useKotlinOutput {
         topLevelConstants = true
     }
-
-    buildConfigField("DEFAULT_KOTLIN_VERSION", libs.versions.kotlin)
-    buildConfigField("DEFAULT_MINECRAFT_VERSION", libs.versions.minecraft)
+    with(libs.versions) {
+        mapOf(
+            "kotlin" to kotlin,
+            "minecraft" to minecraft,
+            "kotlinx_coroutines" to kotlinx.coroutines,
+            "kotlinx_serialization" to kotlinx.serialization,
+            "kotlinx_datetime" to kotlinx.datetime,
+            "kotlinx_atomicfu" to kotlinx.atomicfu,
+            "kotlinx_io" to kotlinx.io,
+            "kotlinx_collections_immutable" to kotlinx.collections.immutable,
+        ).forEach { (name, version) ->
+            buildConfigField("DEFAULT_${name.uppercase()}_VERSION", version)
+        }
+    }
     buildConfigField("WADDLE_PLUGINS", provider { gradlePlugin.plugins.associate { it.tags.get().first() to it.id } })
 }
 
