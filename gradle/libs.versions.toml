@@ -23,6 +23,7 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 paperweight-userdev = { module = "io.papermc.paperweight:paperweight-userdev", version.ref = "paperweight" }
 run-task = { module = "xyz.jpenilla:run-task", version.ref = "run-task" }
 shadow = { module = "io.github.goooler.shadow:shadow-gradle-plugin", version.ref = "shadow" }
+maven-publish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "maven-publish" }
 
 [plugins]
 plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "plugin-publish" }

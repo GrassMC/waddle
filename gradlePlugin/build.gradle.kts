@@ -15,6 +15,7 @@ dependencies {
     implementation(libs.run.task)
     implementation(libs.paperweight.userdev)
     implementation(libs.shadow)
+    implementation(libs.maven.publish)
 }
 
 val jdkVersion = 17
@@ -47,11 +48,6 @@ publishing {
             credentials(PasswordCredentials::class)
         }
     }
-}
-
-mavenPublishing {
-    signAllPublications()
-    coordinates(artifactId = "waddle-gradle-plugin")
 }
 
 buildConfig {
