@@ -15,6 +15,7 @@ dependencies {
     implementation(libs.run.task)
     implementation(libs.paperweight.userdev)
     implementation(libs.shadow)
+    implementation(libs.maven.publish)
 }
 
 val jdkVersion = 17
