@@ -50,11 +50,6 @@ publishing {
     }
 }
 
-mavenPublishing {
-    signAllPublications()
-    coordinates(artifactId = "waddle-gradle-plugin")
-}
-
 buildConfig {
     packageName = "io.github.grassmc.waddle"
     useKotlinOutput {
