@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/GrassMC/waddle/compare/v2.2.0...v2.3.0) (2024-07-09)
+
+
+### Features
+
+* waddle publish plugin ([#64](https://github.com/GrassMC/waddle/issues/64)) ([f9cd968](https://github.com/GrassMC/waddle/commit/f9cd968064181007be88be380f65f2225be63b95))
+
 ## [2.2.0](https://github.com/GrassMC/waddle/compare/v2.1.0...v2.2.0) (2024-07-07)
 
 
