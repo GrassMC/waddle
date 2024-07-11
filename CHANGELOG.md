@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/GrassMC/waddle/compare/v2.3.0...v3.0.0) (2024-07-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* reuse project property for github username & token ([#69](https://github.com/GrassMC/waddle/issues/69))
+
+### Features
+
+* reuse project property for github username & token ([#69](https://github.com/GrassMC/waddle/issues/69)) ([d970738](https://github.com/GrassMC/waddle/commit/d970738998a45387d3bb896fd44ceff366f14347))
+
 ## [2.3.0](https://github.com/GrassMC/waddle/compare/v2.2.0...v2.3.0) (2024-07-09)
 
 
