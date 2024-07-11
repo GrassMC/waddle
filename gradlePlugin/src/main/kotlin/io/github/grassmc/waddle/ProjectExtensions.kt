@@ -31,3 +31,22 @@ internal fun Project.configureDefaultRepositories() {
         findByName(ArtifactRepositoryContainer.DEFAULT_MAVEN_CENTRAL_REPO_NAME) ?: mavenCentral()
     }
 }
+
+/**
+ * Returns the value of a property in the current [Project] or its ancestors, identified by the given [dottedName].
+ *
+ * This method searches for properties in the current [Project] and its ancestors and returns the value of the first
+ * match.
+ * The [dottedName] parameter specifies the name of the property to search for.
+ * It should be in dot notation, such as "foo.bar".
+ *
+ * If no property with the exact [dottedName] is found, this method tries two alternative variations:
+ * - It replaces all dots (".") in the [dottedName] with underscores ("_") and searches for a match.
+ * - It replaces all dots (".") in the [dottedName] with the next character uppercase and searches for a match.
+ *
+ * If no match is found using any of the variations, this method returns null.
+ */
+internal fun Project.matchProperty(dottedName: String) =
+    findProperty(dottedName)
+        ?: findProperty(dottedName.replace('.', '_'))
+        ?: findProperty(dottedName.replace(Regex("\\..")) { it.value.substring(1).uppercase() })
